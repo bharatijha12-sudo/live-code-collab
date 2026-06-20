@@ -22,3 +22,23 @@ A real-time collaborative coding platform inspired by VS Code.
 - HTML
 - CSS
 - JavaScript
+ ## Features
+
+- Real-time collaborative coding
+- Monaco Editor integration
+- Multi-language execution
+- Workspace persistence
+- Room-based collaboration
+- File explorer
+- Folder hierarchy
+- Theme system
+- Chat system
+- Import folder support
+
+## Future Improvements
+
+- AI coding assistant
+- Voice channels
+- Video collaboration
+- Deployment support
+- Cloud workspace storage
