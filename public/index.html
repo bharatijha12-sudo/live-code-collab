@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveCode Workspace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div id="welcomeOverlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(17, 24, 68, 0.95); z-index: 2000; display: flex; align-items: center; justify-content: center;">
+        <div style="background: #EAE0CF; padding: 35px; border-radius: 16px; width: 380px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3); text-align: center;">
+            <h2 style="margin: 0 0 5px 0; color: #111844;">🚀 LiveCode Portal</h2>
+            <p style="font-size: 13px; color: #4b5694; margin-bottom: 25px;">Follow the steps to enter your workspace</p>
+
+            <div id="portalStep1" style="display: block;">
+                <div style="text-align: left; margin-bottom: 20px;">
+                    <label style="font-size: 12px; font-weight: bold; color: #4B5694; text-transform: uppercase;">1. Set Your Identity</label>
+                    <input type="text" id="portalUsernameInput" placeholder="Enter username / nickname..." style="width: 100%; padding: 12px; margin-top: 6px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+                </div>
+                <button onclick="nextPortalStep()" style="width: 100%; padding: 12px; background: #4B5694; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Continue</button>
+            </div>
+
+            <div id="portalStep2" style="display: none;">
+                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <button id="tabCreateBtn" onclick="togglePortalTab('create')" style="flex: 1; background: #4B5694; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Create Room</button>
+                    <button id="tabJoinBtn" onclick="togglePortalTab('join')" style="flex: 1; background: #7288AE; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Join Room</button>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 14px; text-align: left;">
+                    <div>
+                        <label id="roomLabelName" style="font-size: 12px; font-weight: bold; color: #4b5694; text-transform: uppercase;">Room ID / Name</label>
+                        <input type="text" id="portalRoomInput" placeholder="e.g., ABC1" style="width: 100%; padding: 12px; margin-top: 6px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+                    </div>
+                    <div>
+                        <label style="font-size: 12px; font-weight: bold; color: #4b5694; text-transform: uppercase;">Room Access Password</label>
+                        <input type="password" id="portalPasswordInput" placeholder="Enter room password key..." style="width: 100%; padding: 12px; margin-top: 6px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+                    </div>
+                    <button id="portalSubmitBtn" onclick="submitPortalForm()" style="width: 100%; margin-top: 10px; padding: 14px; background: #4B5694; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Launch Workspace</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<button id="dashboardToggleBtn" onclick="toggleControlDashboard()" style="position: fixed; top: 15px; left: 15px; z-index: 1000; width: 42px; height: 42px; background: #111844; color: white; border: none; border-radius: 10px; font-size: 20px; cursor: pointer; display:flex; align-items:center; justify-content:center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">☰</button>
+    <div id="slidingDashboard" style="position: fixed; top: 0; left: -320px; width: 300px; height: 100vh; background: #EAE0CF; border-right: 2px solid #7288AE; padding: 20px; box-sizing: border-box; z-index: 999; transition: left 0.3s ease; overflow-y: auto;">
+        <h3 style="margin: 0 0 20px 0; border-bottom: 2px solid #7288AE; padding-bottom: 10px; color: #111844; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Control Dashboard</h3>
+        
+       <div
+class="profile-card"
+style="
+margin-bottom:15px;
+display:flex;
+flex-direction:column;
+gap:10px;
+background:rgba(255,255,255,0.4);
+padding:12px;
+border-radius:8px;
+"
+>
+
+<div class="avatar-section">
+
+<div id="profileAvatarCircle" class="profile-avatar-circle">
+😀
+</div>
+
+<button
+id="changeAvatarBtn"
+class="avatar-edit-btn"
+onclick="openAvatarPicker()"
+>
+✏️
+</button>
+
+</div>
+
+<div>
+<label
+style="
+font-size:11px;
+font-weight:bold;
+color:#4B5694;
+text-transform:uppercase;
+display:block;
+margin-bottom:4px;
+"
+>
+Your Nickname
+</label>
+
+<input
+type="text"
+id="dashboardProfileNameInput"
+oninput="saveProfileData()"
+style="
+width:100%;
+padding:8px;
+background:#fff;
+border:1px solid #ccc;
+border-radius:4px;
+box-sizing:border-box;
+"
+/>
+</div>
+
+<div>
+<label
+style="
+font-size:11px;
+font-weight:bold;
+color:#4B5694;
+text-transform:uppercase;
+display:block;
+margin-bottom:4px;
+"
+>
+Email Address
+</label>
+
+<input
+type="email"
+id="dashboardEmailInput"
+oninput="saveProfileData()"
+placeholder="name@domain.com"
+style="
+width:100%;
+padding:8px;
+background:#fff;
+border:1px solid #ccc;
+border-radius:4px;
+box-sizing:border-box;
+"
+/>
+</div>
+
+</div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="font-size: 11px; font-weight: bold; color: #4B5694; text-transform: uppercase; display: block; margin-bottom: 6px;">Workspace Theme</label>
+            <select id="editorThemeSelect" onchange="applyCustomThemePalette(this.value)" style="width: 100%; padding: 10px; background: #fff; border: 1px solid #ccc; border-radius: 6px; font-weight: 500;">
+                <option value="theme2">🌊 Midnight Lo-Fi</option>
+<option value="theme1">☕ Mocha Rebellion</option>
+<option value="theme3">🩰 Strawberry Cloud</option>
+<option value="theme4">🥃 Dark Roast Society</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 20px; border-top: 1px solid #7288AE; padding-top: 15px;">
+            <label style="font-size: 11px; font-weight: bold; color: #4B5694; text-transform: uppercase; display: block; margin-bottom: 6px;">Quick Room Switcher</label>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <input type="text" id="dashRoomName" placeholder="Room Name" style="width: 100%; padding: 8px; background: #fff; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <input type="password" id="dashRoomPass" placeholder="Password" style="width: 100%; padding: 8px; background: #fff; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <div style="display: flex; gap: 6px;">
+                    <button onclick="addNewRoomFromDashboard('create')" style="flex: 1; padding: 8px; background: #22c55e; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px;">Create</button>
+                    <button onclick="addNewRoomFromDashboard('join')" style="flex: 1; padding: 8px; background: #3b82f6; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px;">Join</button>
+                <button
+    onclick="copyInviteLink()"
+    style="
+        width:100%;
+        padding:8px;
+        margin-top:8px;
+    "
+>
+    Copy Invite Link
+</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="border-top: 2px solid #7288AE; padding-top: 15px;">
+            <button
+onclick="deleteCurrentRoom()"
+style="
+width:100%;
+padding:10px;
+background:#dc2626;
+color:white;
+border:none;
+border-radius:6px;
+margin-bottom:8px;">
+🗑 Delete Current Room
+</button>
+<button
+onclick="leaveCurrentRoom()"
+style="
+width:100%;
+padding:10px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+margin-bottom:10px;">
+🚪 Exit Current Room
+</button>
+            <h4 style="margin: 0 0 10px 0; color: #4B5694; font-size: 12px; text-transform: uppercase;">Active Channels (Click to Jump)</h4>
+            <ul id="multiRoomsActiveTabsList" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px;"></ul>
+        </div>
+    </div>
+
+   <div id="mainLayoutApp" class="app-layout" style="margin: 0; padding: 0; width: 100vw; height: 100vh; display: grid;grid-template-columns:65% 35%; overflow: hidden;">
+    <div class="editor-section"
+style="
+display:flex;
+flex-direction:column;
+height:100vh;
+padding:6px;
+gap:6px;
+box-sizing:border-box;
+background:transparent;
+min-width:0;
+overflow:hidden;">
+<div
+style="
+display:flex;
+flex:4.5;
+min-height:0;
+gap:8px;
+">
+
+
+<div
+id="fileExplorer"
+    style="
+    width:220px;
+    background:var(--explorer-bg,#ffffff);
+    border-radius:18px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    ">
+
+<div
+        style="
+        padding:12px 12px 12px 60px;
+        font-weight:bold;
+        color:white;
+        border-bottom:1px solid rgba(255,255,255,.15);
+        display:flex;
+        align-items:center;
+        ">
+            📁 Explorer
+</div>
+
+        <div
+        id="fileList"
+        style="
+        flex:1;
+        overflow-y:auto;
+        ">
+        </div>
+
+<div
+style="
+display:flex;
+flex-direction:column;
+gap:6px;
+padding:6px;
+">
+
+<button
+id="newFolderBtn"
+style="
+border:none;
+padding:12px;
+background:#d7e9ff;
+cursor:pointer;
+">
+    📁 New Folder
+</button>
+
+<button
+id="importFolderBtn"
+style="
+border:none;
+padding:12px;
+background:#ffe8b5;
+cursor:pointer;
+">
+    📂 Import Folder
+</button>
+
+<button
+id="newFileBtn"
+style="
+border:none;
+padding:12px;
+background:var(--new-file-btn-bg,#ffffff);
+color:var(--new-file-btn-color,#000000);
+cursor:pointer;
+">
+    + New File
+</button>
+
+<input
+type="file"
+id="folderImportInput"
+webkitdirectory
+multiple
+style="display:none;"
+>
+
+</div>
+
+    </div>
+
+   <div
+style="
+flex:1;
+display:flex;
+flex-direction:column;
+min-height:0;
+">
+
+<div
+    id="editorTabsBar"
+    style="
+height:44px;
+display:flex;
+align-items:flex-end;
+gap:4px;
+padding:0 10px;
+background:var(--editor-tab-bg,#0b245e);
+
+overflow-x:auto;
+overflow-y:hidden;
+white-space:nowrap;
+flex-wrap:nowrap;
+min-width:0;
+">
+    </div>
+
+<div
+id="editorContainer"
+style="
+flex:1;
+min-height:0;
+min-width:0;
+border-radius:24px;
+overflow:hidden;
+">
+    </div>
+
+</div>
+
+</div>
+
+<div id="terminalHeaderBar"
+style="
+height:28px;
+display:flex;
+gap:10px;
+align-items:center;
+padding:4px 8px;
+border-radius:18px;
+margin-top:4px;
+">
+            <span style="
+font-size:18px;
+margin-right:8px;
+">
+⚡
+</span>
+
+<div id="languageSelectorWrap"
+style="
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+">
+
+<span id="languageIcon">⚙️</span>
+
+<select
+id="editorLanguageSelect"
+onchange="changeWorkspaceLanguage(this.value)">
+    <option value="javascript">JavaScript</option>
+    <option value="python">Python</option>
+    <option value="cpp">C++</option>
+    <option value="c">C</option>
+    <option value="java">Java</option>
+    <option value="csharp">C#</option>
+
+    <option value="html">HTML</option>
+    <option value="css">CSS</option>
+
+    <option value="typescript">TypeScript</option>
+    <option value="go">Go</option>
+    <option value="rust">Rust</option>
+</select>
+
+</div>
+
+   <button id="runCodeExecutionBtn"
+style="
+padding:12px 24px;
+border-radius:14px;
+font-weight:700;
+font-size:15px;
+"
+onclick="executeCurrentWorkspaceCode()">
+    Run
+</button>
+
+<button
+id="previewWorkspaceBtn"
+style="
+padding:12px 24px;
+border-radius:14px;
+font-weight:700;
+font-size:15px;
+"
+onclick="previewWorkspaceProject()">
+    Preview
+</button>
+<button id="floatingChatBtn">
+
+💬
+
+<span id="unreadChatCount">
+0
+</span>
+
+</button>
+<button id="activityBtn">
+!
+</button>
+</div>
+
+<div
+id="terminalLogContentBody"
+style="
+height:150px;
+overflow:auto;
+padding:10px;
+border-radius:16px;
+margin-top:2px;
+">
+</div>
+
+<input
+id="terminalPromptInputField"
+style="
+height:34px;
+width:100%;
+padding:10px 14px;
+border-radius:16px;
+margin-top:6px;
+font-size:14px;
+font-family:'JetBrains Mono', monospace;
+"
+placeholder="Program input..."
+onkeydown="
+if(event.key==='Enter')
+sendTerminalInputBufferData();"
+/>
+</div>
+
+<div id="chatSectionContainer"
+class="chat-section"
+style="
+padding:8px;
+box-sizing:border-box;
+">
+            <div id="chatHeaderBar"
+class="chat-header"
+style="
+background:#7288AE;
+color:white;
+padding:15px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
+
+<span id="chatHeaderTitle">
+💬 Waiting Portal Connection...
+</span>
+
+<button
+id="minimizeChatBtn"
+style="
+background:none;
+border:none;
+color:white;
+font-size:18px;
+cursor:pointer;
+">
+➖
+</button>
+
+</div>
+            
+            <div id="onlineStatusTray" style="background: rgba(255,255,255,0.3); padding: 10px 15px; border-bottom: 1px solid rgba(0,0,0,0.08); font-size: 12px; display: flex; align-items: center; gap: 6px;">
+               <div style="font-weight:bold;">
+
+</div> <div
+    id="activeUsersList"
+    style="
+        margin-top:8px;
+        max-height:140px;
+        overflow-y:auto;
+    "
+>
+</div>
+            </div>
+            <!--
+            <div
+    id="cursorStatusBar"
+    style="
+        font-size:12px;
+        padding:6px 10px;
+        border-bottom:1px solid rgba(255,255,255,.1);
+        opacity:.85;
+    "
+>
+    No active cursor tracking
+</div>
+-->
+
+            <div class="messages-container" id="messages" style="padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #fafafa;"></div>
+<div
+    id="typingIndicator"
+    style="
+        height:20px;
+        font-size:12px;
+        opacity:.8;
+        padding-left:8px;
+        padding-bottom:6px;
+        "
+></div>
+            <div id="chatInputBar" class="input-area" style="padding: 10px; background: rgba(0,0,0,0.03); display: flex; gap: 8px; border-top: 1px solid #ccc; align-items: center;">
+                <input type="text" id="messageInput" placeholder="Write a text message..." autocomplete="off" style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+               <input
+    type="file"
+    id="fileInput"
+    style="display:none;"
+>
+
+<button
+    id="attachBtn"
+    onclick="document.getElementById('fileInput').click()"
+>
+📎
+</button>
+                <button id="chatSendBtn" onclick="sendMessage()" style="padding: 10px 16px; background: #4B5694; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Send</button>
+              <button id="micBtn" onclick="toggleRecording()">
+🎤
+</button>
+            </div>
+        </div>
+        <div id="activityPopup">
+
+    <div id="activityPopupHeader">
+
+        <span>
+            Active Editors
+        </span>
+
+        <button id="closeActivityPopup">
+            ✕
+        </button>
+
+    </div>
+
+    <div id="activityPopupBody">
+
+    </div>
+
+</div>
+
+    
+
+   
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0/min/vs/loader.min.js"></script>
+<script src="/script.js"></script>
+
+<div id="avatarModal" class="avatar-modal">
+
+<div class="avatar-modal-box">
+
+<h3>Choose Avatar</h3>
+
+<input
+type="file"
+id="avatarUploadInput"
+accept="image/*"
+/>
+
+<div id="avatarGrid" class="avatar-grid">
+
+<div onclick="selectAvatar('😀')">😀</div>
+<div onclick="selectAvatar('😎')">😎</div>
+<div onclick="selectAvatar('🤖')">🤖</div>
+<div onclick="selectAvatar('👻')">👻</div>
+<div onclick="selectAvatar('🦄')">🦄</div>
+<div onclick="selectAvatar('🚀')">🚀</div>
+<div onclick="selectAvatar('🔥')">🔥</div>
+<div onclick="selectAvatar('🐱')">🐱</div>
+<div onclick="selectAvatar('🐼')">🐼</div>
+<div onclick="selectAvatar('🦊')">🦊</div>
+<div onclick="selectAvatar('🐸')">🐸</div>
+<div onclick="selectAvatar('🦁')">🦁</div>
+
+</div>
+
+<button onclick="closeAvatarPicker()">
+Save
+</button>
+</body>
+</html>

@@ -1,0 +1,517 @@
+{
+  "roomPasswords": {
+    "funny": "0805",
+    "sunny": "0805",
+    "midnight": "0805",
+    "ilysm": "ilysm",
+    "baby": "baby",
+    "cool": "0805",
+    "ilyb": "ilyb"
+  },
+  "roomOwners": {
+    "funny": "bharati",
+    "sunny": "cutiee",
+    "midnight": "bharati",
+    "ilysm": "ilysm",
+    "baby": "bharati",
+    "cool": "cutiee",
+    "ilyb": "ilysm"
+  },
+  "roomCodes": {
+    "funny": "",
+    "ilysm": "#include<stdio.h>\r\nint main () {\r\n    printf(\"I love bharati\");\r\n}",
+    "sunny": "#include <stdio.h>\r\n\r\nint main() {\r\n    printf(\"Hell\");\r\n}",
+    "midnight": "",
+    "money": "#include<stdio.h>\r\nint main() {\r\n    printf(\"hii\");\r\n}",
+    "ilyb": "#include <stdio.h>\r\n\r\nstruct Time\r\n{\r\n    int hr;\r\n    int min;\r\n    int sec;\r\n};\r\n\r\nstruct Time addTime(struct Time t1, struct Time t2)\r\n{\r\n    struct Time result;\r\n\r\n    result.sec = t1.sec + t2.sec;\r\n    result.min = t1.min + t2.min;\r\n    result.hr = t1.hr + t2.hr;\r\n\r\n    // Convert excess seconds to minutes\r\n    if(result.sec >= 60)\r\n    {\r\n        result.min += result.sec / 60;\r\n        result.sec = result.sec % 60;\r\n    }\r\n\r\n    // Convert excess minutes to hours\r\n    if(result.min >= 60)\r\n    {\r\n        result.hr += result.min / 60;\r\n        result.min = result.min % 60;\r\n    }\r\n\r\n    return result;\r\n}\r\n\r\nint main()\r\n{\r\n    struct Time t1, t2, sum;\r\n\r\n    printf(\"Enter first time (hh mm ss): \");\r\n    scanf(\"%d %d %d\", &t1.hr, &t1.min, &t1.sec);\r\n\r\n    printf(\"Enter second time (hh mm ss): \");\r\n    scanf(\"%d %d %d\", &t2.hr, &t2.min, &t2.sec);\r\n\r\n    sum = addTime(t1, t2);\r\n\r\n    printf(\"\\nSum of times = %02d:%02d:%02d\",\r\n           sum.hr, sum.min, sum.sec);\r\n\r\n    return 0;\r\n}"
+  },
+  "roomMessages": {
+    "funny": [
+      {
+        "room": "funny",
+        "username": "cutiee",
+        "text": "heelo"
+      },
+      {
+        "room": "funny",
+        "username": "bharati",
+        "text": "heyyy"
+      },
+      {
+        "room": "funny",
+        "username": "cutiee",
+        "text": "heyy"
+      },
+      {
+        "room": "funny",
+        "username": "bharati",
+        "text": "heyyy"
+      },
+      {
+        "room": "funny",
+        "username": "cutiee",
+        "text": "heyyy"
+      },
+      {
+        "room": "funny",
+        "username": "bharati",
+        "text": "heyyy"
+      },
+      {
+        "room": "funny",
+        "username": "cutiee",
+        "text": "hiiyyyaaaa"
+      },
+      {
+        "room": "funny",
+        "username": "cutiee",
+        "text": "hyyyyy"
+      },
+      {
+        "room": "funny",
+        "username": "bharati",
+        "text": "heeyyyy"
+      },
+      {
+        "room": "funny",
+        "username": "cutiee",
+        "text": "heeyyy"
+      },
+      {
+        "room": "funny",
+        "username": "bharati",
+        "text": "ytjtyj"
+      },
+      {
+        "room": "funny",
+        "username": "cutiee",
+        "text": "gyhygjhy"
+      }
+    ],
+    "ilysm": [
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "aaggyyiiiii"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "aaggyyiiiii"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "tujhe cutie typing dikha rha hai??????"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "boolllll"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hiiii"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hii"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "heeyyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "nhi dikha rha h"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "aree"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "kaha gya"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hiiii"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "hhheeellloooooo"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "dikhaya???????????"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "nhiii dikhayaa"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "mera dikh rhaa???"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "wps se kr"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hiiiiiiiiiiiiiiiiiiiiiii meriiiiiiiiiiiii babyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "dikhaaaaaaa???"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "naahhhh nhi dikhaya"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "thik krna prega"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "koi nai cutuuuu kya sunddr website bnayi hai re ahahahahahah"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "code likh rhi tu dekh show horha tere mai"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "likhhhhhhhhhhhh"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hnnnnnndikh rhaaaa"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "output??"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "huiiiihuiiiii"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hehehhehhheheh sb perfect haiiii babyyyyyyyyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "ab regfresh mar page"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "same code display hona chahiye"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "lang ke saath"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "kiya????"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hnnnnnnnn dikhhhh rhaaaa haiiii woooooooowwwwwwwwwwww"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "chloooo"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "perfect"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hehheehehehheehhe"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "ummmmmmmmmmmaaaaaaahhhhhhhhhhhhhhhh"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "ye typing wala sahi krna prega"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "aur kuch changes?!"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "kyaaaaaaaa"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "ummmaaaaaaaahhhhhh"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "typing kr rha h tu ya mai ye show krna chahiye"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hheheehehehhehe sb perfect haiiiii tu bahuttttt  tej hai hehehehhehehehehhe"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "ummmmmmmmmmmmmmmmmmmmmmmaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "wo to hhh!!!!!!!!!!!! ummahhhhhhhhhh"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "kam krne de abbbb!!!!!!!!!!!!1"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "okieeeeeeeeee babyyyyyyyyy huum khaaa rheeeeeeee"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "okiiieeeeeeeeeee"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "kishlay se baat kiya????/"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "nhiiiiiiiii"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "kyuuuuu"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "krlengweeeeee abhiiiii khaaaaaaaneeeeeeeeee deeee"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "heeelllooo"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hiiiiiiiiiiiiii babyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "aagyyyaaaaaaaaa"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "aggyyyaaaaaaa"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "shiow ho rha h"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "dikhhhh rhaaaaa typingggggggggg"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "yayyayayayayyayaya"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "yayyyyyyyyyyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hurrrrrrrraaaaaaayyyyyyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "partyyyyyyyyyyyyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "huiiiihhuuiiiiiiiiii"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "heeeyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "yayyyyyyyyyyyyyyyyyyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "heeyyyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "areeh ye kya hua chat ko?"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "ye kise aarha"
+      },
+      {
+        "room": "ilysm",
+        "username": "bharati",
+        "text": "thilk krnd di"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "okieeeeeeeee"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "babyyyyyy"
+      },
+      {
+        "room": "ilysm",
+        "username": "ilysm",
+        "text": "hiiiii"
+      }
+    ],
+    "baby": [
+      {
+        "room": "baby",
+        "username": "bharati",
+        "text": "heyyy"
+      },
+      {
+        "room": "baby",
+        "username": "ilysm",
+        "text": "hiiiiii"
+      }
+    ],
+    "midnight": [
+      {
+        "room": "midnight",
+        "username": "cutiee",
+        "text": "heyeyeyey"
+      }
+    ],
+    "money": [
+      {
+        "room": "money",
+        "username": "cutiee",
+        "text": "heyyy"
+      },
+      {
+        "room": "money",
+        "username": "cutiee",
+        "text": "hetyyyy"
+      },
+      {
+        "room": "money",
+        "username": "cutiee",
+        "text": "heyyy"
+      },
+      {
+        "room": "money",
+        "username": "cutiee",
+        "text": "bghb"
+      }
+    ]
+  },
+  "roomLanguages": {
+    "funny": "c",
+    "ilysm": "c",
+    "sunny": "c",
+    "money": "c",
+    "ilyb": "c"
+  },
+  "roomFiles": {
+    "funny": {
+      "Untitled": "",
+      "jmmh.c": "",
+      "jnmhm/__folder__": "",
+      "jnmhm/huuj/__folder__": "",
+      "jnmhm/huuj/dfvfrvg.c": "",
+      "gvbbg/__folder__": ""
+    },
+    "ilyb": {
+      "Untitled": "",
+      "bharati is pgl/__folder__": "",
+      "ujjawal kalu.js": "",
+      "kalua.c": "",
+      "bharati is pgl/bharati gussail.c.c": "",
+      "rubbish/idk.c": "#include <stdio.h>\r\n\r\nstruct Time\r\n{\r\n    int hr;\r\n    int min;\r\n    int sec;\r\n};\r\n\r\nstruct Time addTime(struct Time t1, struct Time t2)\r\n{\r\n    struct Time result;\r\n\r\n    result.sec = t1.sec + t2.sec;\r\n    result.min = t1.min + t2.min;\r\n    result.hr = t1.hr + t2.hr;\r\n\r\n    // Convert excess seconds to minutes\r\n    if(result.sec >= 60)\r\n    {\r\n        result.min += result.sec / 60;\r\n        result.sec = result.sec % 60;\r\n    }\r\n\r\n    // Convert excess minutes to hours\r\n    if(result.min >= 60)\r\n    {\r\n        result.hr += result.min / 60;\r\n        result.min = result.min % 60;\r\n    }\r\n\r\n    return result;\r\n}\r\n\r\nint main()\r\n{\r\n    struct Time t1, t2, sum;\r\n\r\n    printf(\"Enter first time (hh mm ss): \");\r\n    scanf(\"%d %d %d\", &t1.hr, &t1.min, &t1.sec);\r\n\r\n    printf(\"Enter second time (hh mm ss): \");\r\n    scanf(\"%d %d %d\", &t2.hr, &t2.min, &t2.sec);\r\n\r\n    sum = addTime(t1, t2);\r\n\r\n    printf(\"\\nSum of times = %02d:%02d:%02d\",\r\n           sum.hr, sum.min, sum.sec);\r\n\r\n    return 0;\r\n}",
+      "rubbish/__folder__": "",
+      "jj.c": ""
+    }
+  }
+}
